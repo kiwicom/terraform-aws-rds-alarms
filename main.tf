@@ -343,7 +343,7 @@ resource "aws_cloudwatch_metric_alarm" "rds_cloudwatch_replication_lag" {
 }
 
 data "template_file" "dd_message_rds_status" {
-  template = "{{#is_alert}}\nRDS {{ host }} is in state **{{ value }}** (see bellow)\n\n2:   failed\n3:   inaccessible-encryption-credentials\n4:   incompatible-network\n5:   incompatible-option-group\n6:   incompatible-parameters\n7:   incompatible-restore\n8:   maintenance\n9:   moving-to-vpc\n10: rebooting\n11: renaming\n12: stopping\n13: stopped\n14: storage-full\n15: upgrading\n{{/is_alert}}\n{{#is_recovery}}RDS {{ host }} is in **available** state{{/is_recovery}}\n${var.dd_prod_slack_channel}"
+  template = "{{#is_alert}}\nRDS {{ host }} is in state **{{ value }}** (see below)\n\n2:   failed\n3:   inaccessible-encryption-credentials\n4:   incompatible-network\n5:   incompatible-option-group\n6:   incompatible-parameters\n7:   incompatible-restore\n8:   maintenance\n9:   moving-to-vpc\n10: rebooting\n11: renaming\n12: stopping\n13: stopped\n14: storage-full\n15: upgrading\n{{/is_alert}}\n{{#is_recovery}}RDS {{ host }} is in **available** state{{/is_recovery}}\n${var.dd_prod_slack_channel}"
 
   vars = {
     database_identifier   = var.database_identifier
